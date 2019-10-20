@@ -13,3 +13,10 @@ To use the LIRI bot the following commands can be entered into the terminal.
 * node liri.js spotify-this-song <song name here>
 * node liri.js movie-this <movie name here>
 * node liri.js do-what-it-says
+
+## Examples
+
+![Concert-this](/images/concert-this.png)
+Format: ![Concert-this](url)
+
+## What's inside
