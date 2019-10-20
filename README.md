@@ -15,6 +15,7 @@ To use the LIRI bot the following commands can be entered into the terminal.
 * node liri.js do-what-it-says
 
 ## Examples
+
 #### Concert-This use
 ![concert-this](/images/concert-this.png)
 #### Spotify-This-Song use
@@ -25,3 +26,12 @@ To use the LIRI bot the following commands can be entered into the terminal.
 ![do-what-it-says](/images/do-what-it-says.png)
 
 ## What's inside
+* Node.js
+* Axios
+* Moment.js
+* Node-Spotify-API
+* DotEnv
+
+## Author
+
+[Dylan Thomas] (https://github.com/thomasdylan)
