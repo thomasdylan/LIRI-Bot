@@ -15,8 +15,13 @@ To use the LIRI bot the following commands can be entered into the terminal.
 * node liri.js do-what-it-says
 
 ## Examples
-
-![Concert-this](/images/concert-this.png)
-Format: ![Concert-this](url)
+#### Concert-This use
+![concert-this](/images/concert-this.png)
+#### Spotify-This-Song use
+![spotify-this-song](/images/spotify-this-song.png)
+#### Movie-This use
+![movie-this](/images/movie-this.png)
+#### Do-What-It-Says use
+![do-what-it-says](/images/do-what-it-says.png)
 
 ## What's inside
