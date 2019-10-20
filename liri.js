@@ -17,6 +17,31 @@ numArray = numArray.join(" ")
 var action = process.argv[2];
 var value = numArray;
 
+var spotifySong = function(value) {
+    spotify
+        .search({
+            type: 'track',
+            query: value,
+            limit: 5
+        })
+        .then(function (response) {
+            console.log("\n___________________________________________\n");
+            for (var i = 0; i < response.tracks.items.length; i++) {
+                var album = response.tracks.items[i].album.name;
+                var artist = response.tracks.items[i].artists[0, 0].name;
+                var song = response.tracks.items[0].name;
+                var preview = response.tracks.items[i].preview_url;
+                console.log("Artist: " + artist + "\n" +
+                    "Song: " + song + "\n" +
+                    "Album: " + album + "\n" +
+                    "Preview: " + preview + "\n___________________________________________\n");
+            }
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+}
+
 
 switch (action) {
     case 'concert-this':
@@ -39,23 +64,7 @@ switch (action) {
         if(!value) {
             value = "The Sign";
         }
-        spotify
-            .search({ type: 'track', query: value, limit: 5 })
-            .then(function(response) {            
-                for(var i = 0; i < response.tracks.items.length; i++) {
-                    var album = response.tracks.items[i].album.name;
-                    var artist = response.tracks.items[i].artists[0, 0].name;
-                    var song = response.tracks.items[0].name;
-                    var preview = response.tracks.items[i].preview_url;
-                    console.log("Artist: " + artist + "\n" +
-                                "Song: " + song + "\n" +
-                                "Album: " + album + "\n" +
-                                "Preview: " + preview + "\n___________________________________________\n");
-                }
-            })
-            .catch(function(err) {
-                console.log(err);
-            })
+        spotifySong(value);
         break;
     case 'movie-this':
         axios.get("http://www.omdbapi.com/?t=" + value + "&y=&plot=short&apikey=trilogy")
@@ -64,6 +73,7 @@ switch (action) {
                     var movieData = response.data;
                     var imdb = movieData.Ratings[0].Value;
                     var rotten = movieData.Ratings[1].Value;
+                    console.log("\n___________________________________________\n");
                     console.log("Title: " + movieData.Title + "\n" +
                                 "Year: " + movieData.Year + "\n" +
                                 "IMDB:  " + imdb + "\n" + 
@@ -72,6 +82,7 @@ switch (action) {
                                 "Language: " + movieData.Language + "\n" + 
                                 "Plot: " + movieData.Plot + "\n" + 
                                 "Actors: " + movieData.Actors + "\n");
+                    console.log("\n___________________________________________\n");
                 })
             .catch(function (error) {
                 console.log(error);
@@ -82,20 +93,7 @@ switch (action) {
             if (error) {
                 return console.log(error);
             }
-            value = data;
-        spotify
-            .search({
-                type: 'track',
-                query: value,
-                limit: 5
-            })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
-
+        spotifySong(data);
         });
         break;
 }
